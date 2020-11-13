@@ -1,0 +1,121 @@
+body {
+  background-color: #d9e3f0;
+}
+
+.game {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  top: -8%;
+  left: 3%;
+
+  @media screen and (min-width: 375px) and (max-height: 667px) {
+    height: 98vh;
+    width: 95vw;
+    position: absolute;
+    top: 10%;
+  }
+
+  @media screen and (min-width: 375px) and (max-height: 812px) {
+    height: 90vh;
+    width: 95vw;
+    position: absolute;
+    top: 10%;
+  }
+
+  @media screen and (min-width: 768px) and (max-height: 1024px) {
+    height: 88vh;
+    width: 95vw;
+    position: absolute;
+    top: 10%;
+  }
+
+  @media screen and (min-width: 1024px) and (max-height: 1366px) {
+    height: 90vh;
+    width: 88vw;
+    position: absolute;
+    top: 10%;
+  }
+
+  @media screen and (min-width: 1100px) and (max-height: 900px) {
+    height: 90vh;
+    width: 85vw;
+    position: absolute;
+    top: 10%;
+  }
+}
+// OH god...
+.game .cards-container {
+  width: calc(100vw - (16px * 12));
+  height: calc(100vh - (16px * 12));
+  margin: 16px * 8;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 10px;
+
+  @media screen and (min-width: 375px) and (max-height: 667px) {
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  @media screen and (min-width: 375px) and (max-height: 667px) {
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  @media screen and (min-width: 1100px) and (max-height: 900px) {
+    grid-template-columns: repeat(8, auto);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 1024px) and (max-height: 1366px) {
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  @include media-breakpoint-down(md) {
+    width: calc(100vw - (5px * 2));
+    height: calc(100vh - (120px * 2));
+    margin: 15px;
+  }
+}
+
+.logo {
+  position: relative;
+  top: 5%;
+  left: 5%;
+  font-size: 43px;
+  font-style: italic;
+  font-stretch: extra-condensed;
+  font-weight: bold;
+  color: #40afbf;
+  font-family: "Poppins", sans-serif, "Muli", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.Dad {
+  position: relative;
+  justify-content: center;
+  top: 8%;
+  text-align: center;
+  font-size: 20px;
+  font-stretch: semi-expanded;
+  font-family: "East Sea Dokdo", cursive;
+  color: #2d5186;
+
+  @media screen and (min-width: 1024px) and (max-height: 1366px) {
+    position: relative;
+    top: 5%;
+  }
+
+  @media screen and (min-width: 375px) and (max-height: 812px) {
+    position: relative;
+    top: 11%;
+  }
+}
