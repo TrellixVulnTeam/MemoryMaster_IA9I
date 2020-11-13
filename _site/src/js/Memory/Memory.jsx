@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { v4 as uuid } from "uuid";
 import contentImg from "../../cards";
 import Card from "../Card/Card";
@@ -32,6 +32,8 @@ function Memory({fieldWidth=4, fieldHeight=4}) {
     const [flippable, setFlippable] = useState(false);
     const [firstCard, setFirstCard] = useState(null);
     const [secondCard, setSecondCard] = useState(null);
+    const [redo, setRedo] = useState(false);
+    const timeouts = useRef([]);
 
     function setCardFlipped(cardID, flipped) {
         setCards(prevState => prevState.map(c => {
@@ -53,11 +55,17 @@ function Memory({fieldWidth=4, fieldHeight=4}) {
         setTimeout(() => {
             let index = 0;
             for (const card of cards) {
-                setTimeout(() => setCardFlipped(card.id, true), index++ * 100);
+                timeouts.current[cards] = setTimeout(() => setCardFlipped(card.id, true), index++ * 100);
             }
             setTimeout(() => setFlippable(true), cards.length * 100);
+            setRedo(true);
         }, 3000);
-    }, []);
+        return () => {
+            timeouts.current.forEach((v) => {
+                clearTimeout(v);
+            });
+        }
+    }, [timeouts.current]);
 
     function resetTwoCards() {
         setFirstCard(null);
@@ -105,6 +113,17 @@ function Memory({fieldWidth=4, fieldHeight=4}) {
             (firstCard) ? setSecondCard(card) : setFirstCard(card);
         }
 
+
+        const onClickRedo = useCallback(() => { //remembering function
+            console.log('onClickRedo');
+            setCards(generateCards(totoalCards));
+            setFlippable(false);
+            setFirstCard(null);
+            setSecondCard(null);
+            setRedo(false);
+            timeouts.current = [];
+        }, []);
+
         return (
         <>
             <div className="logo">Remember Me!</div>
@@ -113,6 +132,7 @@ function Memory({fieldWidth=4, fieldHeight=4}) {
             <div className="cards-container">
                 {cards.map(card => <Card onClick={() => onClickCard(card)} key={card.id} {...card} />)}
             </div>
+            {redo && <button className="btn" onClick={onClickRedo}>again!</button>}
         </div>
         </>
         );
