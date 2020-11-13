@@ -1,5 +1,5 @@
 const path = require('path');
-const RefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'); 
+ 
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -35,7 +35,7 @@ module.exports = {
                 }], '@babel/preset-react',
             ],
                 plugins: ['@babel/plugin-proposal-class-properties',
-                          'react-refresh/babel',
+                          'react-hot-loader/babel',
         ],
             },
         },
@@ -55,15 +55,11 @@ module.exports = {
     ],
     },
     plugins: [
-        new RefreshWebpackPlugin(),
     ],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'app.js',
         publicPath: '/dist/',
     }, //output
-    devServer: {
-        publicPath: '/dist/',
-        hot: true
-    },
+    
 };
