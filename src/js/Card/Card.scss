@@ -63,7 +63,7 @@ $card-border-radius: 15px;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, #ff6f00 25%, #ffd54f 75%);
+    background: linear-gradient(45deg, #ff6f00 25%, #f8bbd0 75%);
     background-size: 56px 56px;
     &::before,
     &::after {
@@ -74,7 +74,7 @@ $card-border-radius: 15px;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(#e91e63, #f8bbd0);
+      background: linear-gradient(#ff5071, #f8bbd0);
       opacity: 0.8;
     }
     &::after {
@@ -84,7 +84,7 @@ $card-border-radius: 15px;
   }
 }
 .card-container:hover .card {
-  background-color: linear-gradient(#ffa000, #ffecb3);
+  background-color: linear-gradient(#ff5071, #ffecb3);
   border: 2px solid #ff9800;
   box-shadow: 0 0 10px rgba(#ffc107, 0.6);
 
